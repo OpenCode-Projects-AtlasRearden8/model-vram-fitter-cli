@@ -1,0 +1,86 @@
+# Offline hardware database for vramfit. Add your own GPUs and CPU
+# presets here, or drop a hardware.toml in your working directory to
+# override or extend this list.
+
+schema_version = 1
+
+[headroom]
+gpu_fraction = 0.95
+cpu_fraction = 0.90
+swap_fraction = 0.85
+
+# Rough decode bandwidth in GB/s, used only for the speed estimate.
+
+[gpus."rtx-4090"]
+name = "NVIDIA RTX 4090"
+vram_gb = 24.0
+memory_bandwidth_gbs = 1008.0
+
+[gpus."rtx-3090"]
+name = "NVIDIA RTX 3090"
+vram_gb = 24.0
+memory_bandwidth_gbs = 936.0
+
+[gpus."rtx-4080"]
+name = "NVIDIA RTX 4080"
+vram_gb = 16.0
+memory_bandwidth_gbs = 717.0
+
+[gpus."rtx-3080"]
+name = "NVIDIA RTX 3080 (10 GB)"
+vram_gb = 10.0
+memory_bandwidth_gbs = 760.0
+
+[gpus."rtx-4060"]
+name = "NVIDIA RTX 4060"
+vram_gb = 8.0
+memory_bandwidth_gbs = 272.0
+
+[gpus."rtx-3060"]
+name = "NVIDIA RTX 3060 (12 GB)"
+vram_gb = 12.0
+memory_bandwidth_gbs = 360.0
+
+[gpus."rtx-3060-8gb"]
+name = "NVIDIA RTX 3060 (8 GB laptop)"
+vram_gb = 8.0
+memory_bandwidth_gbs = 336.0
+
+[gpus."gtx-1080"]
+name = "NVIDIA GTX 1080"
+vram_gb = 8.0
+memory_bandwidth_gbs = 320.0
+
+[gpus."rx-7900-xtx"]
+name = "AMD Radeon RX 7900 XTX"
+vram_gb = 24.0
+memory_bandwidth_gbs = 960.0
+
+[gpus."apple-m-series-16"]
+name = "Apple Silicon, 16 GB unified memory (GPU share ~12 GB)"
+vram_gb = 12.0
+memory_bandwidth_gbs = 150.0
+
+[cpus."cpu-8gb"]
+name = "Typical laptop, 8 GB RAM"
+ram_gb = 8.0
+swap_gb = 8.0
+memory_bandwidth_gbs = 40.0
+
+[cpus."cpu-16gb"]
+name = "Typical desktop, 16 GB RAM"
+ram_gb = 16.0
+swap_gb = 8.0
+memory_bandwidth_gbs = 55.0
+
+[cpus."cpu-32gb"]
+name = "Workstation, 32 GB RAM"
+ram_gb = 32.0
+swap_gb = 16.0
+memory_bandwidth_gbs = 70.0
+
+[cpus."cpu-64gb"]
+name = "Big workstation, 64 GB RAM"
+ram_gb = 64.0
+swap_gb = 32.0
+memory_bandwidth_gbs = 90.0

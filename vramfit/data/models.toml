@@ -1,0 +1,167 @@
+# Offline model database for vramfit.
+# Sizes are approximate published parameter counts and architecture values
+# for common open-weight models. All figures are decimal GB.
+# Add your own entries here, or drop a models.toml in your working
+# directory to override or extend this list. Required fields per model:
+#   params_b, layers, kv_head_dim, max_context
+
+schema_version = 1
+
+# Bits per weight for common GGUF-style quants (effective, including
+# embedding/lm-head rounding). Order = quality order, best first.
+[quants.fp16]
+bits_per_weight = 16.0
+quality = "reference quality, largest file"
+
+[quants.q8]
+bits_per_weight = 8.5
+quality = "near-lossless"
+
+[quants.q6]
+bits_per_weight = 6.6
+quality = "excellent, hard to tell from fp16 in chat use"
+
+[quants.q5]
+bits_per_weight = 5.5
+quality = "very good"
+
+[quants.q4]
+bits_per_weight = 4.7
+quality = "good, the usual everyday sweet spot"
+
+[quants.q3]
+bits_per_weight = 3.9
+quality = "noticeably degraded on some tasks"
+
+[quants.q2]
+bits_per_weight = 3.1
+quality = "rough-draft quality, use only to squeeze onto tiny hardware"
+
+[overheads]
+gpu_gb = 1.2
+cpu_gb = 0.4
+
+# Context lengths considered when suggesting a setup.
+context_ladder = [512, 1024, 2048, 4096, 8192, 12288, 16384, 24576, 32768, 49152, 65536, 81920, 98304, 131072]
+
+# kv_head_dim = number of KV heads x head dimension (GQA-aware).
+
+[models."llama-3.2-1b"]
+name = "Llama 3.2 1B"
+family = "llama"
+params_b = 1.24
+layers = 16
+kv_head_dim = 512
+max_context = 131072
+
+[models."llama-3.2-3b"]
+name = "Llama 3.2 3B"
+family = "llama"
+params_b = 3.21
+layers = 28
+kv_head_dim = 512
+max_context = 131072
+
+[models."llama-3.1-8b"]
+name = "Llama 3.1 8B"
+family = "llama"
+params_b = 8.03
+layers = 32
+kv_head_dim = 1024
+max_context = 131072
+
+[models."llama-3.1-70b"]
+name = "Llama 3.1 70B"
+family = "llama"
+params_b = 70.6
+layers = 80
+kv_head_dim = 1024
+max_context = 131072
+
+[models."deepseek-r1-distill-llama-8b"]
+name = "DeepSeek R1 Distill Llama 8B"
+family = "llama"
+params_b = 8.03
+layers = 32
+kv_head_dim = 1024
+max_context = 131072
+
+[models."mistral-7b"]
+name = "Mistral 7B v0.3"
+family = "mistral"
+params_b = 7.25
+layers = 32
+kv_head_dim = 1024
+max_context = 32768
+
+[models."mistral-nemo-12b"]
+name = "Mistral Nemo 12B"
+family = "mistral"
+params_b = 12.25
+layers = 40
+kv_head_dim = 1024
+max_context = 131072
+
+[models."qwen2.5-0.5b"]
+name = "Qwen 2.5 0.5B"
+family = "qwen"
+params_b = 0.49
+layers = 24
+kv_head_dim = 128
+max_context = 32768
+
+[models."qwen2.5-1.5b"]
+name = "Qwen 2.5 1.5B"
+family = "qwen"
+params_b = 1.54
+layers = 28
+kv_head_dim = 128
+max_context = 32768
+
+[models."qwen2.5-7b"]
+name = "Qwen 2.5 7B"
+family = "qwen"
+params_b = 7.62
+layers = 28
+kv_head_dim = 512
+max_context = 32768
+
+[models."qwen2.5-14b"]
+name = "Qwen 2.5 14B"
+family = "qwen"
+params_b = 14.77
+layers = 48
+kv_head_dim = 1024
+max_context = 32768
+
+[models."qwen2.5-32b"]
+name = "Qwen 2.5 32B"
+family = "qwen"
+params_b = 32.76
+layers = 64
+kv_head_dim = 1024
+max_context = 32768
+
+[models."gemma-2-2b"]
+name = "Gemma 2 2B"
+family = "gemma"
+params_b = 2.61
+layers = 26
+kv_head_dim = 2048
+max_context = 8192
+
+[models."gemma-2-9b"]
+name = "Gemma 2 9B"
+family = "gemma"
+params_b = 9.24
+layers = 42
+kv_head_dim = 2048
+max_context = 8192
+
+[models."phi-3-mini-4k"]
+name = "Phi 3 Mini (4k context)"
+family = "phi"
+params_b = 3.82
+layers = 32
+kv_head_dim = 3072
+max_context = 4096
